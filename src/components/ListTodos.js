@@ -19,19 +19,32 @@ const ListTodos = () => {
     }
   };
 
-  const getTodos = async () => {
-   
-    try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`,{
-        method:"GET"
-      });
-      const jsonData = await response.json();
+const getTodos = async () => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`, {
+      method: "GET"
+    });
 
-      setTodos(jsonData);
-    } catch (err) {
-      console.error(err.message);
+    // Check if the response is OK (status code 200-299)
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-  };
+
+    // Attempt to parse the response as JSON
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const jsonData = await response.json();
+      setTodos(jsonData);
+    } else {
+      const text = await response.text(); // Get the raw response text
+      console.error('Unexpected response format:', text);
+      throw new Error('Received non-JSON response');
+    }
+  } catch (err) {
+    console.error('Fetch error:', err.message);
+  }
+};
+
 
   useEffect(() => {
     getTodos();
