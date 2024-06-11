@@ -20,6 +20,7 @@ const ListTodos = () => {
   };
 
   const getTodos = async () => {
+   
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`,{
         method:"GET"
@@ -36,7 +37,7 @@ const ListTodos = () => {
     getTodos();
   }, []);
 
-  console.log(todos);
+
 
   return (
     <Fragment>
