@@ -18,11 +18,7 @@ const InputTodo = () => {
       console.error(err.message);
     }
   };
-  // background: red;
-  // padding: 1rem;
-  // font-size: 2rem;
-  // font-family: monospace;
-  // border-radius: 10px;
+
 
   return (
     <Fragment>
