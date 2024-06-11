@@ -20,8 +20,16 @@ const ListTodos = () => {
   };
 
   const getTodos = async () => {
+   
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`);
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`,{
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: 'include',
+      });
+      
       const jsonData = await response.json();
 
       setTodos(jsonData);
