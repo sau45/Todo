@@ -10,7 +10,7 @@ const EditTodo = ({ todo }) => {
     try {
       const body = { description };
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/pern/todos/${todo.todo_id}`,
+        `${process.env.REACT_APP_BASE_URL}/todos/${todo?.todo_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

@@ -9,7 +9,7 @@ const ListTodos = () => {
 
   const deleteTodo = async id => {
     try {
-      const deleteTodo = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos/${id}`, {
+      const deleteTodo = await fetch(`${process.env.REACT_APP_BASE_URL}/todos/${id}`, {
         method: "DELETE"
       });
 
@@ -19,12 +19,14 @@ const ListTodos = () => {
     }
   };
   const getTodos = async () => {
+  
    
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`,{
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/get/todos`,{
         method:"GET"
       });
       const jsonData = await response.json();
+      console.log(jsonData)
 
       setTodos(jsonData);
     } catch (err) {
