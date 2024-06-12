@@ -20,7 +20,7 @@ const ListTodos = () => {
   };
 
 const getTodos = async () => {
-  try {
+
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/pern/todos`, {
       method: "GET"
     });
@@ -40,9 +40,7 @@ const getTodos = async () => {
       console.error('Unexpected response format:', text);
       throw new Error('Received non-JSON response');
     }
-  } catch (err) {
-    console.error('Fetch error:', err.message);
-  }
+ 
 };
 
 
